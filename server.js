@@ -15,12 +15,12 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 // Handle returning a timestamp
 app.get('/api/timestamp/:date?', (req, res) => {
     // Store our date response. This will default to the current datetime
-    var date = new Date();
+    let date = new Date();
 
     // Check if the optional date parameter was provided
     if (req.params.date) {
         // Convert the date parameter to a string
-        var unixDate = +req.params.date;
+        let unixDate = +req.params.date;
 
         // Check if the date passed is unix time. If it's not, use the date string provided
         date = isNaN(unixDate) ? new Date(req.params.date) : new Date(unixDate);
