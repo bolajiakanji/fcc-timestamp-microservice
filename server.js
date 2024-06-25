@@ -15,12 +15,12 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 // Handle returning a timestamp
 app.get('/api/timestamp/:date?', (req, res) => {
     // Store our date response. This will default to the current datetime
-    let date = new Date();
+    var date = new Date();
 
     // Check if the optional date parameter was provided
     if (req.params.date) {
         // Convert the date parameter to a string
-        let unixDate = +req.params.date;
+        var unixDate = +req.params.date;
 
         // Check if the date passed is unix time. If it's not, use the date string provided
         date = isNaN(unixDate) ? new Date(req.params.date) : new Date(unixDate);
@@ -34,4 +34,4 @@ app.get('/api/timestamp/:date?', (req, res) => {
 });
 
 // Create a listener to handle requests
-const listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
+var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
