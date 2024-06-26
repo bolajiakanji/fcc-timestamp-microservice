@@ -26,8 +26,8 @@ app.get('/api/:date?', (req, res) => {
         date = isNaN(unixDate) ? new Date(req.params.date) : new Date(unixDate);
 
         // Check if the date created is valid. Throw an error if it's an invalid date
-        if (!(date instanceof Date) || isNaN(date.getTime())) {
-            console.log(date.getTime())
+        if (isNaN(date.getTime())) {
+            console.log(date)
             return res.json({ error: "Invalid Date" });
     }}
 
@@ -36,4 +36,9 @@ app.get('/api/:date?', (req, res) => {
 });
 
 // Create a listener to handle requests
-var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
+var listener = app.listen(process.env.PORT, () => {console.log('Your app is listening on port ' + listener.address().port)
+let date = new Date(1973,3)
+console.log(date.getTime())
+console.log(date instanceof Date)
+
+});
